@@ -6,6 +6,9 @@ using UnityEngine.Events;
 public class QuestionStart : MonoBehaviour {
 
 	public QuestionClass question;
+
+	private bool penalty = false;
+	private float countdown = 0.0f;
 	private int iterate = 0;
 
 	void Start(){
@@ -13,7 +16,14 @@ public class QuestionStart : MonoBehaviour {
 		newQuestion ();
 	}
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
+		if (penalty == true) {
+			countdown = countdown + Time.deltaTime;
+			if( countdown >= 5.0f) {
+				penalty = false;
+				countdown = 0.0f;
+			}
+		}
 	}
 
 	void newQuestion() {
@@ -26,6 +36,9 @@ public class QuestionStart : MonoBehaviour {
 	}
 
 	public void isAnswerA(){
+		if (penalty == true)
+			return;
+
 		if ("A" == this.question.getCorrectAnswer()) {
 			transform.FindChild("ChoiceB").GetComponent<Button>().interactable = true;
 			transform.FindChild("ChoiceC").GetComponent<Button>().interactable = true;
@@ -35,10 +48,14 @@ public class QuestionStart : MonoBehaviour {
 			}
 		} else {
 			transform.FindChild("ChoiceA").GetComponent<Button>().interactable = false;
+			penalty = true;
 		}
 	}
 
 	public void isAnswerB(){
+		if (penalty == true)
+			return;
+
 		if ("B" == this.question.getCorrectAnswer()) {
 			transform.FindChild("ChoiceA").GetComponent<Button>().interactable = true;
 			transform.FindChild("ChoiceC").GetComponent<Button>().interactable = true;
@@ -48,10 +65,14 @@ public class QuestionStart : MonoBehaviour {
 			}
 		} else {
 			transform.FindChild("ChoiceB").GetComponent<Button>().interactable = false;
+			penalty = true;
 		}
 	}
 
 	public void isAnswerC(){
+		if (penalty == true)
+			return;
+
 		if ("C" == this.question.getCorrectAnswer()) {
 			transform.FindChild("ChoiceA").GetComponent<Button>().interactable = true;
 			transform.FindChild("ChoiceB").GetComponent<Button>().interactable = true;
@@ -61,10 +82,14 @@ public class QuestionStart : MonoBehaviour {
 			}
 		} else {
 			transform.FindChild("ChoiceC").GetComponent<Button>().interactable = false;
+			penalty = true;
 		}
 	}
 
 	public void isAnswerD(){
+		if (penalty == true)
+			return;
+
 		if ("D" == this.question.getCorrectAnswer()) {
 			transform.FindChild("ChoiceA").GetComponent<Button>().interactable = true;
 			transform.FindChild("ChoiceB").GetComponent<Button>().interactable = true;
@@ -74,6 +99,7 @@ public class QuestionStart : MonoBehaviour {
 			}
 		} else {
 			transform.FindChild("ChoiceD").GetComponent<Button>().interactable = false;
+			penalty = true;
 		}
 	}
 }
