@@ -7,6 +7,7 @@ public class GetInputText : MonoBehaviour {
     public HostData[] hostList;
     private string roomName;
     private bool isServerStarted = false;
+    const string PREFIX = "SG2015";
     // Use this for initialization
     void Start()
     {
@@ -21,7 +22,7 @@ public class GetInputText : MonoBehaviour {
 
     public void RefreshHostList()
     {
-        MasterServer.RequestHostList("SG2015" + roomName);
+        MasterServer.RequestHostList(PREFIX + roomName);
 
     }
 
@@ -33,7 +34,7 @@ public class GetInputText : MonoBehaviour {
         // Try to join room
         for (int i = 0; i < hostList.Length; i++)
         {
-            if (hostList[i].gameName == roomName)
+            if (hostList[i].gameName == PREFIX + roomName)
             {
                 JoinServer(hostList[i]);
                 return;
@@ -59,7 +60,7 @@ public class GetInputText : MonoBehaviour {
         if (!isServerStarted)
         {
             Network.InitializeServer(5, 25000, !Network.HavePublicAddress());
-            MasterServer.RegisterHost("SG2015" + roomName, "SG2015" + roomName);
+            MasterServer.RegisterHost(PREFIX + roomName, PREFIX + roomName);
             isServerStarted = true;
         }
         
