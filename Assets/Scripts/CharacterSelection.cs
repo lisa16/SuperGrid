@@ -15,9 +15,12 @@ public class CharacterSelection : MonoBehaviour {
 	
 	}
 
+
     public void PlayerChangeColor()
     {
-        Image currImg = currentGameObject.GetComponentInChildren<Image>();
-        currImg.color = Color.red;
+        GameObject RPCBroadcast = GameObject.FindGameObjectWithTag("RPCBroadcast");
+        RPCBroadcast.SendMessage("PlayerReadyBroadcast");
+        //Image currImg = currentGameObject.GetComponentInChildren<Image>();
+        //currImg.color = Color.red;
     }
 }
