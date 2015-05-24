@@ -90,14 +90,10 @@ public class GetInputText : MonoBehaviour {
     void OnConnectedToServer()
     {
         Debug.Log("Joined existing server");
-
-    }
-
-    public void JoinRoom()
-    {
         int playersConnected = Network.connections.Length;
         characterAssigned = characters[playersConnected];
         GameObject player = Network.Instantiate(characterPrefabs[playersConnected], characterPrefabs[playersConnected].transform.position, Quaternion.identity, 0) as GameObject;
+
     }
 
 
