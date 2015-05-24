@@ -6,7 +6,7 @@ public class GetInputText : MonoBehaviour {
 
     public HostData[] hostList;
     private string roomName;
-
+    private bool isServerStarted = false;
     // Use this for initialization
     void Start()
     {
@@ -56,8 +56,13 @@ public class GetInputText : MonoBehaviour {
     /// <param name="roomName"></param>
     public void StartServer()
     {
-        Network.InitializeServer(5, 25000, !Network.HavePublicAddress());
-        MasterServer.RegisterHost("SG2015" + roomName, "SG2015" + roomName);
+        if (!isServerStarted)
+        {
+            Network.InitializeServer(5, 25000, !Network.HavePublicAddress());
+            MasterServer.RegisterHost("SG2015" + roomName, "SG2015" + roomName);
+            isServerStarted = true;
+        }
+        
     }
 
 
