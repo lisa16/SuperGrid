@@ -22,6 +22,7 @@ public class GetInputText : MonoBehaviour {
     public void RefreshHostList()
     {
         MasterServer.RequestHostList("SG2015" + roomName);
+
     }
 
     public void OnMasterServerEvent(MasterServerEvent msEvent)
@@ -30,12 +31,12 @@ public class GetInputText : MonoBehaviour {
             hostList = MasterServer.PollHostList();
 
         // Try to join room
-        RefreshHostList();
         for (int i = 0; i < hostList.Length; i++)
         {
             if (hostList[i].gameName == roomName)
             {
                 JoinServer(hostList[i]);
+                return;
             }
         }
 
@@ -59,6 +60,12 @@ public class GetInputText : MonoBehaviour {
         MasterServer.RegisterHost("SG2015" + roomName, "SG2015" + roomName);
     }
 
+
+    public void OnServerInitialized()
+    {
+        Debug.Log("Joined Server!");
+    }
+
     public void JoinRoom()
     {
         InputField inputField = this.GetComponent<InputField>();
@@ -70,4 +77,6 @@ public class GetInputText : MonoBehaviour {
     {
         Debug.Log("Server Joined");
     }
+
+
 }
