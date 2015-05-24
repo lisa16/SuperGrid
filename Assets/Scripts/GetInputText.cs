@@ -15,8 +15,6 @@ public class GetInputText : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        //_canvas = GameObject.FindGameObjectWithTag("NetworkCanvas");
-        
     }
 
     // Update is called once per frame
@@ -71,7 +69,6 @@ public class GetInputText : MonoBehaviour {
         
     }
 
-
     public void OnServerInitialized()
     {
         Debug.Log("Created Server!");        // Assign character number 1
@@ -91,11 +88,11 @@ public class GetInputText : MonoBehaviour {
     void OnConnectedToServer()
     {
         Debug.Log("Joined existing server");
-        int playersConnected = Network.connections.Length;
+        int playersConnected = int.Parse(Network.player.ToString());
+
+        Debug.Log(playersConnected);
         characterAssigned = characters[playersConnected];
         GameObject player = Network.Instantiate(characterPrefabs[playersConnected], characterPrefabs[playersConnected].transform.position, Quaternion.identity, 0) as GameObject;
         CharacterSelection.currentGameObject = player;
     }
-
-
 }

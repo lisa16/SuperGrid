@@ -13,21 +13,12 @@ public class CharacterSelection : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
 	
 	}
-
 
     [RPC]
     public void PlayerChangeColor()
     {
         currentGameObject.BroadcastMessage("ColorChange");
-        //GameObject RPCBroadcast = GameObject.FindGameObjectWithTag("RPCBroadcast");
-        //RPCBroadcast.SendMessage("PlayerReadyBroadcast");
-        //Image currImg = currentGameObject.GetComponentInChildren<Image>();
-        //currImg.color = Color.red;
-
-        //if (_networkView.isMine)
-        //    _networkView.RPC("PlayerChangeColor", RPCMode.OthersBuffered);
     }
 }
