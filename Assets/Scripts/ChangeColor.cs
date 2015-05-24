@@ -35,5 +35,7 @@ public class ChangeColor : MonoBehaviour {
         }
 
         Debug.Log("Everyone is Ready!!!");
+        //Loading Game Scene
+        Application.LoadLevel("GameScene");
     }
 }

@@ -13,7 +13,6 @@ public class QuestionStart : MonoBehaviour {
 	private float timer = 0.0f;
 	private float maxTimeout = 180.0f;
 	private int iterate = 0;
-	private int points = 0;
 
 	void Start(){
 		ListOfQuestions.setList();
@@ -57,7 +56,7 @@ public class QuestionStart : MonoBehaviour {
 			if(iterate < ListOfQuestions.questionList.Length){
 				newQuestion();
 			}
-			points++;
+			GameSettings.IncreaseScore();
 		} else {
 			transform.FindChild("ChoiceA").GetComponent<Button>().interactable = false;
 			penalty = true;
@@ -75,8 +74,8 @@ public class QuestionStart : MonoBehaviour {
 			if(iterate < ListOfQuestions.questionList.Length){
 				newQuestion();
 			}
-			points++;
-		} else {
+            GameSettings.IncreaseScore();
+        } else {
 			transform.FindChild("ChoiceB").GetComponent<Button>().interactable = false;
 			penalty = true;
 		}
@@ -93,8 +92,8 @@ public class QuestionStart : MonoBehaviour {
 			if(iterate < ListOfQuestions.questionList.Length){
 				newQuestion();
 			}
-			points++;
-		} else {
+            GameSettings.IncreaseScore();
+        } else {
 			transform.FindChild("ChoiceC").GetComponent<Button>().interactable = false;
 			penalty = true;
 		}
@@ -111,8 +110,8 @@ public class QuestionStart : MonoBehaviour {
 			if(iterate < ListOfQuestions.questionList.Length){
 				newQuestion();
 			}
-			points++;
-		} else {
+            GameSettings.IncreaseScore();
+        } else {
 			transform.FindChild("ChoiceD").GetComponent<Button>().interactable = false;
 			penalty = true;
 		}
