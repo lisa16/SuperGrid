@@ -14,6 +14,8 @@ public class GameSettings : MonoBehaviour {
 
     private Vector3 initPlatformTransform;
 
+    private AudioSource winningSound;
+
 	// Use this for initialization
 	void Start () {
         myPlayerAnim = Network.Instantiate(playerAnimList[GetInputText.characterAssignedIndex], playerAnimList[GetInputText.characterAssignedIndex].transform.position, Quaternion.identity, 0) as GameObject;
@@ -21,6 +23,7 @@ public class GameSettings : MonoBehaviour {
         GameObject _cam = GameObject.FindGameObjectWithTag("MainCamera");
         _cam.transform.SetParent(myPlayerAnim.transform);
         initPlatformTransform = litPlatform.transform.position;
+        winningSound = GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -34,6 +37,9 @@ public class GameSettings : MonoBehaviour {
         myPlayerAnim.transform.position = new Vector2(initTransform.x + scoreXOffset * currentScore, initTransform.y);
         Instantiate(litPlatform, new Vector2(initPlatformTransform.x + scoreXOffset * currentScore, initPlatformTransform.y), Quaternion.identity);
         if(currentScore == 10)
+        {
             Instantiate(litHospital);
+            winningSound.Play();
+        }
     }
 }

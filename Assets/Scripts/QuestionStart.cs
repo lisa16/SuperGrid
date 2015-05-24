@@ -14,10 +14,14 @@ public class QuestionStart : MonoBehaviour {
 	private float maxTimeout = 180.0f;
 	private int iterate = 0;
 
+    private AudioSource[] audioSources;
+
 	void Start(){
 		ListOfQuestions.setList();
 		newQuestion ();
-	}
+        audioSources = GetComponents<AudioSource>();
+    }
+
 	// Update is called once per frame
 	void FixedUpdate () {
 		if (penalty == true) {
@@ -46,8 +50,12 @@ public class QuestionStart : MonoBehaviour {
 	}
 
 	public void isAnswerA(){
-		if (penalty == true)
-			return;
+
+        if (penalty == true)
+        {
+            audioSources[1].Play();
+            return;
+        }
 
 		if ("A" == this.question.getCorrectAnswer()) {
 			transform.FindChild("ChoiceB").GetComponent<Button>().interactable = true;
@@ -59,17 +67,23 @@ public class QuestionStart : MonoBehaviour {
             GameObject settings = GameObject.FindGameObjectWithTag("GameSettings");
             GameSettings script = settings.GetComponent<GameSettings>();
             script.IncreaseScore();
-		} else {
+            audioSources[2].Play();
+        } else {
 			transform.FindChild("ChoiceA").GetComponent<Button>().interactable = false;
 			penalty = true;
-		}
+            audioSources[1].Play();
+        }
 	}
 
 	public void isAnswerB(){
-		if (penalty == true)
-			return;
 
-		if ("B" == this.question.getCorrectAnswer()) {
+        if (penalty == true)
+        {
+            audioSources[1].Play();
+            return;
+        }
+
+        if ("B" == this.question.getCorrectAnswer()) {
 			transform.FindChild("ChoiceA").GetComponent<Button>().interactable = true;
 			transform.FindChild("ChoiceC").GetComponent<Button>().interactable = true;
 			transform.FindChild("ChoiceD").GetComponent<Button>().interactable = true;
@@ -79,17 +93,23 @@ public class QuestionStart : MonoBehaviour {
             GameObject settings = GameObject.FindGameObjectWithTag("GameSettings");
             GameSettings script = settings.GetComponent<GameSettings>();
             script.IncreaseScore();
+            audioSources[2].Play();
         } else {
 			transform.FindChild("ChoiceB").GetComponent<Button>().interactable = false;
 			penalty = true;
-		}
+            audioSources[1].Play();
+        }
 	}
 
 	public void isAnswerC(){
-		if (penalty == true)
-			return;
 
-		if ("C" == this.question.getCorrectAnswer()) {
+        if (penalty == true)
+        {
+            audioSources[1].Play();
+            return;
+        }
+
+        if ("C" == this.question.getCorrectAnswer()) {
 			transform.FindChild("ChoiceA").GetComponent<Button>().interactable = true;
 			transform.FindChild("ChoiceB").GetComponent<Button>().interactable = true;
 			transform.FindChild("ChoiceD").GetComponent<Button>().interactable = true;
@@ -99,17 +119,24 @@ public class QuestionStart : MonoBehaviour {
             GameObject settings = GameObject.FindGameObjectWithTag("GameSettings");
             GameSettings script = settings.GetComponent<GameSettings>();
             script.IncreaseScore();
+            audioSources[2].Play();
         } else {
 			transform.FindChild("ChoiceC").GetComponent<Button>().interactable = false;
 			penalty = true;
-		}
+            audioSources[1].Play();
+        }
 	}
 
 	public void isAnswerD(){
-		if (penalty == true)
-			return;
+        
 
-		if ("D" == this.question.getCorrectAnswer()) {
+        if (penalty == true)
+        {
+            audioSources[1].Play();
+            return;
+        }
+
+        if ("D" == this.question.getCorrectAnswer()) {
 			transform.FindChild("ChoiceA").GetComponent<Button>().interactable = true;
 			transform.FindChild("ChoiceB").GetComponent<Button>().interactable = true;
 			transform.FindChild("ChoiceC").GetComponent<Button>().interactable = true;
@@ -119,9 +146,11 @@ public class QuestionStart : MonoBehaviour {
             GameObject settings = GameObject.FindGameObjectWithTag("GameSettings");
             GameSettings script = settings.GetComponent<GameSettings>();
             script.IncreaseScore();
+            audioSources[2].Play();
         } else {
 			transform.FindChild("ChoiceD").GetComponent<Button>().interactable = false;
 			penalty = true;
-		}
+            audioSources[1].Play();
+        }
 	}
 }

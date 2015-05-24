@@ -13,10 +13,12 @@ public class GetInputText : MonoBehaviour {
     public static int characterAssignedIndex;
     public GameObject[] characterPrefabs;
 
+    private AudioSource buttonClick;
 
     // Use this for initialization
     void Start()
     {
+        buttonClick = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -83,6 +85,7 @@ public class GetInputText : MonoBehaviour {
 
     public void ConnectToServer()
     {
+        buttonClick.Play();
         InputField inputField = this.GetComponent<InputField>();
         roomName = inputField.text;
         RefreshHostList();
