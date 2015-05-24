@@ -15,7 +15,6 @@ public class GameSettings : MonoBehaviour {
         initTransform = myPlayerAnim.transform.position;
         GameObject _cam = GameObject.FindGameObjectWithTag("MainCamera");
         _cam.transform.SetParent(myPlayerAnim.transform);
-        IncreaseScore();
     }
 	
 	// Update is called once per frame
