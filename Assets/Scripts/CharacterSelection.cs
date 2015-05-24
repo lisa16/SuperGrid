@@ -21,7 +21,7 @@ public class CharacterSelection : MonoBehaviour {
     [RPC]
     public void PlayerChangeColor()
     {
-        currentGameObject.SendMessage("ChangeColor");
+        currentGameObject.BroadcastMessage("ColorChange");
         //GameObject RPCBroadcast = GameObject.FindGameObjectWithTag("RPCBroadcast");
         //RPCBroadcast.SendMessage("PlayerReadyBroadcast");
         //Image currImg = currentGameObject.GetComponentInChildren<Image>();
