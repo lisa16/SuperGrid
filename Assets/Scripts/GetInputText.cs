@@ -68,7 +68,7 @@ public class GetInputText : MonoBehaviour {
 
     public void OnServerInitialized()
     {
-        Debug.Log("Joined Server!");
+        Debug.Log("Created Server!");
     }
 
     public void JoinRoom()
@@ -80,7 +80,7 @@ public class GetInputText : MonoBehaviour {
 
     void OnConnectedToServer()
     {
-        Debug.Log("Server Joined");
+        Debug.Log("Server existing Joined");
     }
 
 
