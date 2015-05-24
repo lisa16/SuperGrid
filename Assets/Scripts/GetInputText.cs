@@ -77,6 +77,7 @@ public class GetInputText : MonoBehaviour {
         Debug.Log("Created Server!");        // Assign character number 1
         characterAssigned = characters[0];
         GameObject player = Network.Instantiate(characterPrefabs[0], characterPrefabs[0].transform.position, Quaternion.identity, 0) as GameObject;
+        CharacterSelection.currentGameObject = player;
         Debug.Log(characterAssigned);
     }
 
@@ -93,7 +94,7 @@ public class GetInputText : MonoBehaviour {
         int playersConnected = Network.connections.Length;
         characterAssigned = characters[playersConnected];
         GameObject player = Network.Instantiate(characterPrefabs[playersConnected], characterPrefabs[playersConnected].transform.position, Quaternion.identity, 0) as GameObject;
-
+        CharacterSelection.currentGameObject = player;
     }
 
 

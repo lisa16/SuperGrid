@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class CharacterSelection : MonoBehaviour {
-
+    public static GameObject currentGameObject;
 	// Use this for initialization
 	void Start () {
 	
@@ -14,8 +15,9 @@ public class CharacterSelection : MonoBehaviour {
 	
 	}
 
-    public void SelectCharacter(string uniqueName)
+    public void PlayerChangeColor()
     {
-
+        Image currImg = currentGameObject.GetComponentInChildren<Image>();
+        currImg.color = Color.red;
     }
 }
