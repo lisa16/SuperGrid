@@ -8,6 +8,8 @@ public class GetInputText : MonoBehaviour {
     private string roomName;
     private bool isServerStarted = false;
     const string PREFIX = "SG2015";
+    private readonly string[] characters = {"player1", "player2", "player3", "player4" , "player5" , "player6" , "player7" , "player8"};
+    string characterAssigned;
     // Use this for initialization
     void Start()
     {
@@ -70,6 +72,9 @@ public class GetInputText : MonoBehaviour {
     public void OnServerInitialized()
     {
         Debug.Log("Created Server!");
+        // Assign character number 1
+        characterAssigned = characters[0];
+        Debug.Log(characterAssigned);
     }
 
     public void JoinRoom()
@@ -81,7 +86,10 @@ public class GetInputText : MonoBehaviour {
 
     void OnConnectedToServer()
     {
-        Debug.Log("Server existing Joined");
+        Debug.Log("Joined existing server");
+        int playersConnected = Network.connections.Length;
+        characterAssigned = characters[playersConnected];
+        Debug.Log(characterAssigned);
     }
 
 
