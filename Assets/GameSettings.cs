@@ -4,15 +4,15 @@ using System.Collections;
 public class GameSettings : MonoBehaviour {
 
     public GameObject[] playerAnimList;
-    private static GameObject myPlayerAnim;
-    private static int currentScore = 0;
+    private GameObject myPlayerAnim;
+    private int currentScore = 0;
     private const int scoreXOffset = 5;
-    private static Vector3 initTransform;
+    private Vector3 initTransform;
 
-    public static GameObject litPlatform;
-    public static GameObject litHospital;
+    public GameObject litPlatform;
+    public GameObject litHospital;
 
-    private static Vector3 initPlatformTransform;
+    private Vector3 initPlatformTransform;
 
 	// Use this for initialization
 	void Start () {
@@ -28,13 +28,12 @@ public class GameSettings : MonoBehaviour {
 	    
 	}
 
-    public static void IncreaseScore()
+    public void IncreaseScore()
     {
         currentScore++;
         myPlayerAnim.transform.position = new Vector2(initTransform.x + scoreXOffset * currentScore, initTransform.y);
         Instantiate(litPlatform, new Vector2(initPlatformTransform.x + scoreXOffset * currentScore, initPlatformTransform.y), Quaternion.identity);
         if(currentScore == 10)
             Instantiate(litHospital);
-
     }
 }
