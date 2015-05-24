@@ -56,22 +56,24 @@ public class QuestionStart : MonoBehaviour {
             audioSources[1].Play();
             return;
         }
-
-		if ("A" == this.question.getCorrectAnswer()) {
+        GameObject settings = GameObject.FindGameObjectWithTag("GameSettings");
+        GameSettings script = settings.GetComponent<GameSettings>();
+        if ("A" == this.question.getCorrectAnswer()) {
 			transform.FindChild("ChoiceB").GetComponent<Button>().interactable = true;
 			transform.FindChild("ChoiceC").GetComponent<Button>().interactable = true;
 			transform.FindChild("ChoiceD").GetComponent<Button>().interactable = true;
 			if(iterate < ListOfQuestions.questionList.Length){
 				newQuestion();
 			}
-            GameObject settings = GameObject.FindGameObjectWithTag("GameSettings");
-            GameSettings script = settings.GetComponent<GameSettings>();
+            
+            
             script.IncreaseScore();
             audioSources[2].Play();
         } else {
 			transform.FindChild("ChoiceA").GetComponent<Button>().interactable = false;
 			penalty = true;
             audioSources[1].Play();
+            script.Explode();
         }
 	}
 
@@ -82,7 +84,8 @@ public class QuestionStart : MonoBehaviour {
             audioSources[1].Play();
             return;
         }
-
+        GameObject settings = GameObject.FindGameObjectWithTag("GameSettings");
+        GameSettings script = settings.GetComponent<GameSettings>();
         if ("B" == this.question.getCorrectAnswer()) {
 			transform.FindChild("ChoiceA").GetComponent<Button>().interactable = true;
 			transform.FindChild("ChoiceC").GetComponent<Button>().interactable = true;
@@ -90,14 +93,14 @@ public class QuestionStart : MonoBehaviour {
 			if(iterate < ListOfQuestions.questionList.Length){
 				newQuestion();
 			}
-            GameObject settings = GameObject.FindGameObjectWithTag("GameSettings");
-            GameSettings script = settings.GetComponent<GameSettings>();
+            
             script.IncreaseScore();
             audioSources[2].Play();
         } else {
 			transform.FindChild("ChoiceB").GetComponent<Button>().interactable = false;
 			penalty = true;
             audioSources[1].Play();
+            script.Explode();
         }
 	}
 
@@ -108,7 +111,8 @@ public class QuestionStart : MonoBehaviour {
             audioSources[1].Play();
             return;
         }
-
+        GameObject settings = GameObject.FindGameObjectWithTag("GameSettings");
+        GameSettings script = settings.GetComponent<GameSettings>();
         if ("C" == this.question.getCorrectAnswer()) {
 			transform.FindChild("ChoiceA").GetComponent<Button>().interactable = true;
 			transform.FindChild("ChoiceB").GetComponent<Button>().interactable = true;
@@ -116,14 +120,14 @@ public class QuestionStart : MonoBehaviour {
 			if(iterate < ListOfQuestions.questionList.Length){
 				newQuestion();
 			}
-            GameObject settings = GameObject.FindGameObjectWithTag("GameSettings");
-            GameSettings script = settings.GetComponent<GameSettings>();
+            
             script.IncreaseScore();
             audioSources[2].Play();
         } else {
 			transform.FindChild("ChoiceC").GetComponent<Button>().interactable = false;
 			penalty = true;
             audioSources[1].Play();
+            script.Explode();
         }
 	}
 
@@ -135,7 +139,8 @@ public class QuestionStart : MonoBehaviour {
             audioSources[1].Play();
             return;
         }
-
+        GameObject settings = GameObject.FindGameObjectWithTag("GameSettings");
+        GameSettings script = settings.GetComponent<GameSettings>();
         if ("D" == this.question.getCorrectAnswer()) {
 			transform.FindChild("ChoiceA").GetComponent<Button>().interactable = true;
 			transform.FindChild("ChoiceB").GetComponent<Button>().interactable = true;
@@ -143,14 +148,14 @@ public class QuestionStart : MonoBehaviour {
 			if(iterate < ListOfQuestions.questionList.Length){
 				newQuestion();
 			}
-            GameObject settings = GameObject.FindGameObjectWithTag("GameSettings");
-            GameSettings script = settings.GetComponent<GameSettings>();
+            
             script.IncreaseScore();
             audioSources[2].Play();
         } else {
 			transform.FindChild("ChoiceD").GetComponent<Button>().interactable = false;
 			penalty = true;
             audioSources[1].Play();
+            script.Explode();
         }
 	}
 }

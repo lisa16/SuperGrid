@@ -16,6 +16,8 @@ public class GameSettings : MonoBehaviour {
 
     private AudioSource winningSound;
 
+    public GameObject explodeAnimPrefab;
+
 	// Use this for initialization
 	void Start () {
         myPlayerAnim = Network.Instantiate(playerAnimList[GetInputText.characterAssignedIndex], playerAnimList[GetInputText.characterAssignedIndex].transform.position, Quaternion.identity, 0) as GameObject;
@@ -41,5 +43,10 @@ public class GameSettings : MonoBehaviour {
             Instantiate(litHospital);
             winningSound.Play();
         }
+    }
+
+    public void Explode()
+    {
+        Destroy(Instantiate(explodeAnimPrefab, myPlayerAnim.transform.position, Quaternion.identity), 2f);
     }
 }
