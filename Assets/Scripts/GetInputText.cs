@@ -80,6 +80,7 @@ public class GetInputText : MonoBehaviour {
         characterAssigned = characters[0];
         GameObject player = Network.Instantiate(characterPrefabs[0], characterPrefabs[0].transform.position, Quaternion.identity, 0) as GameObject;
         player.transform.SetParent(canvas.transform, false);
+        player.transform.parent = canvas.transform;
         Debug.Log(characterAssigned);
     }
 
@@ -94,7 +95,6 @@ public class GetInputText : MonoBehaviour {
     {
         Debug.Log("Joined existing server");
 
-        Debug.Log(characterAssigned);
     }
 
     public void JoinRoom()
@@ -104,6 +104,7 @@ public class GetInputText : MonoBehaviour {
         GameObject player = Network.Instantiate(characterPrefabs[playersConnected], characterPrefabs[playersConnected].transform.position, Quaternion.identity, 0) as GameObject;
         GameObject canvas = GameObject.FindGameObjectWithTag("NetworkCanvas");
         player.transform.SetParent(canvas.transform, false);
+        player.transform.parent = canvas.transform;
     }
 
 
