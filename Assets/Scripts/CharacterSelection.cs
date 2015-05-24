@@ -26,7 +26,7 @@ public class CharacterSelection : MonoBehaviour {
         Image currImg = currentGameObject.GetComponentInChildren<Image>();
         currImg.color = Color.red;
 
-        if (_networkView.isMine)
-            _networkView.RPC("PlayerChangeColor", RPCMode.OthersBuffered);
+        //if (_networkView.isMine)
+        //    _networkView.RPC("PlayerChangeColor", RPCMode.OthersBuffered);
     }
 }
