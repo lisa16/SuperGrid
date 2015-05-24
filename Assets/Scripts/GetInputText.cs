@@ -83,7 +83,7 @@ public class GetInputText : MonoBehaviour {
         Debug.Log(characterAssigned);
     }
 
-    public void JoinRoom()
+    public void ConnectToServer()
     {
         InputField inputField = this.GetComponent<InputField>();
         roomName = inputField.text;
@@ -93,12 +93,17 @@ public class GetInputText : MonoBehaviour {
     void OnConnectedToServer()
     {
         Debug.Log("Joined existing server");
+
+        Debug.Log(characterAssigned);
+    }
+
+    public void JoinRoom()
+    {
         int playersConnected = Network.connections.Length;
         characterAssigned = characters[playersConnected];
         GameObject player = Network.Instantiate(characterPrefabs[playersConnected], characterPrefabs[playersConnected].transform.position, Quaternion.identity, 0) as GameObject;
         GameObject canvas = GameObject.FindGameObjectWithTag("NetworkCanvas");
         player.transform.SetParent(canvas.transform, false);
-        Debug.Log(characterAssigned);
     }
 
 
