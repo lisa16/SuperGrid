@@ -11,7 +11,7 @@ public class GetInputText : MonoBehaviour {
     private readonly string[] characters = {"player1", "player2", "player3", "player4" , "player5" , "player6" , "player7" , "player8"};
     string characterAssigned;
     public GameObject[] characterPrefabs;
-    public GameObject _networkCanvas;
+
     // Use this for initialization
     void Start()
     {
@@ -74,13 +74,9 @@ public class GetInputText : MonoBehaviour {
 
     public void OnServerInitialized()
     {
-        Debug.Log("Created Server!");
-        GameObject canvas = Network.Instantiate(_networkCanvas, _networkCanvas.transform.position, Quaternion.identity, 0) as GameObject;
-        // Assign character number 1
+        Debug.Log("Created Server!");        // Assign character number 1
         characterAssigned = characters[0];
         GameObject player = Network.Instantiate(characterPrefabs[0], characterPrefabs[0].transform.position, Quaternion.identity, 0) as GameObject;
-        player.transform.SetParent(canvas.transform, false);
-        player.transform.parent = canvas.transform;
         Debug.Log(characterAssigned);
     }
 
@@ -102,9 +98,6 @@ public class GetInputText : MonoBehaviour {
         int playersConnected = Network.connections.Length;
         characterAssigned = characters[playersConnected];
         GameObject player = Network.Instantiate(characterPrefabs[playersConnected], characterPrefabs[playersConnected].transform.position, Quaternion.identity, 0) as GameObject;
-        GameObject canvas = GameObject.FindGameObjectWithTag("NetworkCanvas");
-        player.transform.SetParent(canvas.transform, false);
-        player.transform.parent = canvas.transform;
     }
 
 
