@@ -8,7 +8,10 @@ public class QuestionStart : MonoBehaviour {
 	public QuestionClass question;
 
 	private bool penalty = false;
+	private bool timeout = false;
 	private float countdown = 0.0f;
+	private float timer = 0.0f;
+	private float maxTimeout = 180.0f;
 	private int iterate = 0;
 	private int points = 0;
 
@@ -23,6 +26,13 @@ public class QuestionStart : MonoBehaviour {
 			if( countdown >= 5.0f) {
 				penalty = false;
 				countdown = 0.0f;
+			}
+		}
+
+		if (timeout == false) {
+			timer = timer + Time.deltaTime;
+			if(timer >= maxTimeout){
+				timeout = true;
 			}
 		}
 	}
