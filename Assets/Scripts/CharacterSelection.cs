@@ -20,7 +20,7 @@ public class CharacterSelection : MonoBehaviour {
     {
         GameObject RPCBroadcast = GameObject.FindGameObjectWithTag("RPCBroadcast");
         RPCBroadcast.SendMessage("PlayerReadyBroadcast");
-        //Image currImg = currentGameObject.GetComponentInChildren<Image>();
-        //currImg.color = Color.red;
+        Image currImg = currentGameObject.GetComponentInChildren<Image>();
+        currImg.color = Color.red;
     }
 }
