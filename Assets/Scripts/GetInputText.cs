@@ -10,6 +10,7 @@ public class GetInputText : MonoBehaviour {
     const string PREFIX = "SG2015";
     private readonly string[] characters = {"player1", "player2", "player3", "player4" , "player5" , "player6" , "player7" , "player8"};
     string characterAssigned;
+    public GameObject[] characterPrefabs;
     // Use this for initialization
     void Start()
     {
@@ -74,6 +75,7 @@ public class GetInputText : MonoBehaviour {
         Debug.Log("Created Server!");
         // Assign character number 1
         characterAssigned = characters[0];
+        Network.Instantiate(characterPrefabs[0], characterPrefabs[0].transform.position, Quaternion.identity, 0);
         Debug.Log(characterAssigned);
     }
 
@@ -89,6 +91,7 @@ public class GetInputText : MonoBehaviour {
         Debug.Log("Joined existing server");
         int playersConnected = Network.connections.Length;
         characterAssigned = characters[playersConnected];
+        Network.Instantiate(characterPrefabs[playersConnected], characterPrefabs[playersConnected].transform.position, Quaternion.identity, 0);
         Debug.Log(characterAssigned);
     }
 
