@@ -26,5 +26,14 @@ public class ChangeColor : MonoBehaviour {
         {
             _networkView.RPC("ColorChange", RPCMode.OthersBuffered);
         }
+
+        GameObject[] playerButtons = GameObject.FindGameObjectsWithTag("PlayerButton");
+        foreach(GameObject go in playerButtons)
+        {
+            if (go.GetComponentInChildren<Image>().color != Color.red)
+                return;
+        }
+
+        Debug.Log("Everyone is Ready!!!");
     }
 }
